@@ -1,0 +1,27 @@
+import random
+class Student:
+  def __init__(self, first_name, last_name, major):
+    self.first_name = first_name
+    self.last_name = last_name
+    self.major = major
+    self.student_id = str(random.randint(5000, 9999))
+list_of_students = []
+dave = Student("David", "Williams", "Electrical Engineering")
+sam = Student("Samuel", "McCoy", "Computer Science" )
+bisi = Student("Olabisi", "Bello", "Chemical Engineering")
+list_of_students.append(dave)
+list_of_students.append(sam)
+list_of_students.append(bisi)
+print(dave.student_id)
+
+with open("Students.txt", "w") as stu:
+  stu.writelines("First_Name  Last_Name Major Student_Id\n")
+  for item in list_of_students:
+    stu.writelines(item.first_name)
+    stu.writelines(" ")
+    stu.writelines(item.last_name)
+    stu.writelines(" ")
+    stu.writelines(item.major)
+    stu.writelines(" ")
+    stu.writelines(item.student_id)
+    stu.writelines("\n")
