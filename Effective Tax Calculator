@@ -1,0 +1,9 @@
+user_income = float(input("What's your family's income  "))
+if user_income > 500000:
+  print(f"Your tax bill is ${0.05 * user_income:.2f}")
+elif user_income > 90000:
+  print(f"Your tax bill is ${0.11 * user_income:.2f}")
+elif user_income > 15000:
+  print(f"Your tax bill is ${0.21 * user_income:.2f}") 
+elif user_income > 0:
+  print(f"Your tax bill is ${0.28 * user_income:.2f}")
