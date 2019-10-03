@@ -1,0 +1,11 @@
+def true_rec(width, length):
+  arr_of_squares = []
+  while width != length:
+    if width > length:
+      width -= length
+      arr_of_squares.append(length)
+    else:
+      length -= width
+      arr_of_squares.append(width)
+  arr_of_squares.append(width // width)
+  return arr_of_squares
