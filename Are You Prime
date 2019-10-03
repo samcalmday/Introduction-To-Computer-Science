@@ -1,0 +1,9 @@
+def are_you_prime(number):
+  for _ in range(2,number):
+    if number % _ == 0 :
+      print("Not prime")
+      break
+    elif _ == number - 1 and number % _ != 0:
+      print('Is Prime')
+      break
+
