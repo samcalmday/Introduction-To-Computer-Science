@@ -1,0 +1,185 @@
+
+arr_player_data = []
+with open("players.txt", "r") as players:
+    oneline = players.readline()
+    while oneline:
+        arr_player_data.append(oneline)
+        oneline = players.readline()
+
+for item in range(len(arr_player_data)):
+    arr_player_data[item] =arr_player_data[item].split()
+  
+
+    try:
+        arr_player_data[item][2] =int(arr_player_data[item][2])//25
+    except:
+        pass
+    
+
+    try:
+        arr_player_data[item][3] =int(arr_player_data[item][3])*4
+    except:
+        pass       
+
+    try:
+        arr_player_data[item][4] =int(arr_player_data[item][4])//10
+    except:
+        pass
+
+    try:
+        arr_player_data[item][5] =int(arr_player_data[item][5])*6
+    except:
+        pass 
+
+    try:
+        arr_player_data[item][6] =int(arr_player_data[item][6])//10
+    except:
+        pass              
+
+    try:
+        arr_player_data[item][7] =int(arr_player_data[item][7])*6
+    except:
+        pass              
+total_sum = 0
+final_player_arr = []
+for item in arr_player_data:
+  for items in item:
+    try:
+      total_sum += items
+    except:
+      pass
+  final_player_arr.append(total_sum)
+  total_sum = 0 
+index = 0
+for item in final_player_arr:
+  try:
+    final_player_arr[index] = [arr_player_data[index][0], arr_player_data[index][1], final_player_arr[index]]
+    index += 1
+  except:
+    pass
+for item in range(len(final_player_arr)):
+  final_player_arr[item][2] = round(final_player_arr[item][2])
+arr_qb = []
+arr_rb = []
+arr_te = []
+arr_wr = []
+
+for item in final_player_arr:
+  if item[0] == "WR":
+    arr_wr.append(item)
+  elif item[0] == "TE":
+    arr_te.append(item) 
+  elif item[0] == "RB":
+    arr_rb.append(item)  
+  elif item[0] == "QB":
+    arr_qb.append(item) 
+
+final_final_arr = []
+current_max = 0
+
+for item in arr_qb:
+  if item[2]> current_max:
+    current_max = item[2]
+
+
+for item in arr_qb:
+  if current_max in item:
+    final_final_arr.append(item)
+    final_player_arr.remove(item)
+current_max = 0
+
+for item in arr_rb:
+  if item[2]> current_max:
+    current_max = item[2]
+
+
+for item in arr_rb:
+  if current_max in item:
+    final_final_arr.append(item)
+    arr_rb.remove(item)
+    final_player_arr.remove(item)
+current_max = 0
+for item in arr_rb:
+  if item[2]> current_max:
+    current_max = item[2]
+
+
+for item in arr_rb:
+  if current_max in item:
+    final_final_arr.append(item)
+    final_player_arr.remove(item)
+current_max = 0
+
+for item in arr_wr:
+  if item[2]> current_max:
+    current_max = item[2]
+
+
+for item in arr_wr:
+  if current_max in item:
+    final_final_arr.append(item)
+    arr_wr.remove(item)
+
+current_max = 0
+for item in arr_wr:
+  if item[2]> current_max:
+    current_max = item[2]
+
+
+for item in arr_wr:
+  if current_max in item:
+    final_final_arr.append(item)
+    final_player_arr.remove(item)
+
+current_max = 0
+for item in arr_te:
+  if item[2]> current_max:
+    current_max = item[2]
+
+
+
+for item in arr_te:
+  if current_max in item:
+    final_final_arr.append(item)
+    final_player_arr.remove(item)
+
+for item in final_final_arr:
+  try:
+    arr_player_data.remove(item)
+  except:
+    pass
+  try:  
+    if item[0] == "QB" :
+      arr_player_data.remove(item)
+  except:
+    pass
+
+current_max = 0
+
+
+for item in final_player_arr:
+  if item[2]> current_max and item[0] != "QB":
+    current_max = item[2]
+
+
+for item in final_player_arr:
+  if current_max in item:
+    final_final_arr.append(item)
+
+current_max = 0
+
+final_final_arr[-1][0] = "FLEX"
+final_final_arr[1][0] = "RB1"
+final_final_arr[2][0] = "RB2"
+final_final_arr[3][0] = "WR1"
+final_final_arr[4][0] = "WR2"
+
+
+for item in final_final_arr:
+  
+  a = str(item)
+  b = a.replace("[", "")
+  c = b.replace("'", "")
+  d = c.replace("]", "")
+  e = d.replace(",", "")
+  print(e)
