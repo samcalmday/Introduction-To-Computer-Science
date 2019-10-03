@@ -1,0 +1,6 @@
+n = int(input("How many lines:  "))
+pattern = "&"
+print(pattern + "|" + pattern)
+for _ in range(2,n + 1):
+  pattern = "&" * _
+  print(pattern + "|" + pattern)
