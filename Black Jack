@@ -1,0 +1,20 @@
+current_card = input("What's your card  ")
+current_worth = 0
+while current_card != "end":
+  if current_card.isnumeric() == False:
+    if current_card == "A":
+      current_worth += 11
+    elif current_card == "K":
+      current_worth += 10
+    elif current_card == "Q":
+      current_worth += 10
+    elif current_card == "J":
+      current_worth += 10
+  else:
+    current_worth += int(current_card) 
+  current_card = input("What's your card  ")
+if current_worth > 21:
+  print(current_worth)
+  print("Bust!!!")
+else:
+  print(current_worth)
