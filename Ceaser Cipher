@@ -1,0 +1,41 @@
+# An encoder/decoder for our spies to secretly send messages.
+
+encryption_option = input("Would you like to Encode or Decode? ") 
+cipher_number = int(input("What is your cipher number? "))
+message_code = input("What is your message? ")
+# should_encode will be true if the user 
+should_encode = "encode" in encryption_option.lower()
+should_decode = "decode" in encryption_option.lower()
+is_cap_letter = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+is_low_letter = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+decryption_ans = ""
+encrypt_ans = ""
+counter = 0
+# Ask the user for their message and cipher number.
+
+if should_encode:
+    for letter in message_code:
+        if letter in is_low_letter:
+            encrypt_ans += is_low_letter[(is_low_letter.index(letter) + cipher_number) % 26]
+        elif letter in is_cap_letter:
+            encrypt_ans += is_cap_letter[(is_cap_letter.index(letter) + cipher_number) % 26]    
+        else:
+            encrypt_ans += letter
+    # Your code here!
+    pass
+elif should_decode:
+    for letter in message_code:
+        if letter in is_low_letter:
+            encrypt_ans += is_low_letter[abs((is_low_letter.index(letter) - cipher_number) % 26)]
+        elif letter in is_cap_letter:
+            encrypt_ans += is_cap_letter[abs((is_cap_letter.index(letter) - cipher_number) % 26)]    
+        else:
+            encrypt_ans += letter
+    # Your code here for extra credit
+    # Focus on getting the code above to work first.
+    pass
+else:
+    # Print a nice notice that we only support encrypt/decrypt
+    # Your code here!
+    pass
+print(encrypt_ans)
