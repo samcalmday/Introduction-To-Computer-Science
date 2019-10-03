@@ -1,0 +1,6 @@
+n = int(input("Many rows:   "))
+pattern = "1"
+print(pattern)
+for _ in range(n + 1):
+  pattern += "01"
+  print(pattern)
