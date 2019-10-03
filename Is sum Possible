@@ -1,0 +1,29 @@
+
+def is_sum_possible(possible_numbers , target_answer):
+  all_numbers = len(possible_numbers)
+  counter = 0
+  answer = target_answer
+  index = 0
+  my_answer = 0
+  for number in possible_numbers:
+
+      while index != all_numbers:
+        if my_answer != answer:
+          my_answer = number + possible_numbers[index]
+
+          counter += 1
+          index += 1
+        else:
+
+          break  
+      if  my_answer == answer :
+        print("True")
+        break
+
+      counter = 0
+      index = 0   
+    
+
+
+
+  
