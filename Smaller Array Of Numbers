@@ -1,0 +1,31 @@
+def SmallestDictionaryOrderedArray(a, b):
+    # Write your code here
+    counter = 0
+    if len(a) < len(b):
+        for item in a:
+            if item < b[counter]:
+                return a
+            elif item > b[counter]:
+                return b
+            else:
+                counter += 1
+        return a        
+    if len(a) > len(b):
+        for item in b:
+            if item < a[counter]:
+                return b
+            elif item > a[counter]:
+                return a
+            else:
+                counter += 1
+        return b        
+    elif len(a) == len(b):
+        for item in b:
+            if item < a[counter]:
+                return b
+            elif item > a[counter]:
+                return a
+            else:
+                counter += 1            
+
+print(SmallestDictionaryOrderedArray([-3, 4, 5, 14, 67], [-3, 4, 5, 15]))                    
